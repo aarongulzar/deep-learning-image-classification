@@ -1,0 +1,8 @@
+# Notebook runtime
+jupyter
+
+# Third-party imports used by both notebooks
+matplotlib
+numpy
+torch
+torchvision
