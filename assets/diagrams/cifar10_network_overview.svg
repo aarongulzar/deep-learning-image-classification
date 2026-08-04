@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="610" viewBox="0 0 1200 610" role="img" aria-labelledby="title desc">
+  <title id="title">Final four-block CIFAR-10 network</title>
+  <desc id="desc">The improved CIFAR-10 model processes a 3 by 32 by 32 image through four input-conditioned intermediate blocks. Max pooling after the first three blocks reduces spatial dimensions to 16 by 16, 8 by 8, and 4 by 4 before the output block produces 10 logits.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Inter, "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 19px Inter, "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .detail { font: 400 16px Inter, "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .small { font: 600 14px Inter, "Segoe UI", Arial, sans-serif; fill: #475569; }
+      .input { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2.5; rx: 12; }
+      .block { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2.5; rx: 12; }
+      .pool { fill: #f1f5f9; stroke: #475569; stroke-width: 2; rx: 12; }
+      .output { fill: #ecfdf5; stroke: #047857; stroke-width: 2.5; rx: 12; }
+      .logits { fill: #fef3c7; stroke: #b45309; stroke-width: 2.5; rx: 12; }
+      .flow { fill: none; stroke: #334155; stroke-width: 2.5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="610" fill="#f8fafc"/>
+  <text x="600" y="44" text-anchor="middle" class="title">Improved CIFAR-10 network</text>
+  <text x="600" y="72" text-anchor="middle" class="detail">Four input-conditioned intermediate blocks; four convolutional paths per block</text>
+
+  <rect x="32" y="125" width="145" height="110" class="input"/>
+  <text x="104" y="165" text-anchor="middle" class="label">Input image</text>
+  <text x="104" y="196" text-anchor="middle" class="detail">3 × 32 × 32</text>
+
+  <path d="M177 180 H220" class="flow"/>
+  <rect x="220" y="110" width="205" height="140" class="block"/>
+  <text x="322" y="146" text-anchor="middle" class="label">Block 1</text>
+  <text x="322" y="177" text-anchor="middle" class="detail">3 → 64 channels</text>
+  <text x="322" y="205" text-anchor="middle" class="detail">64 × 32 × 32 output</text>
+  <text x="322" y="230" text-anchor="middle" class="small">4 independent paths</text>
+
+  <path d="M425 180 H470" class="flow"/>
+  <rect x="470" y="125" width="155" height="110" class="pool"/>
+  <text x="547" y="164" text-anchor="middle" class="label">MaxPool 2×2</text>
+  <text x="547" y="195" text-anchor="middle" class="detail">64 × 16 × 16</text>
+
+  <path d="M625 180 H670" class="flow"/>
+  <rect x="670" y="110" width="205" height="140" class="block"/>
+  <text x="772" y="146" text-anchor="middle" class="label">Block 2</text>
+  <text x="772" y="177" text-anchor="middle" class="detail">64 → 128 channels</text>
+  <text x="772" y="205" text-anchor="middle" class="detail">128 × 16 × 16 output</text>
+  <text x="772" y="230" text-anchor="middle" class="small">4 independent paths</text>
+
+  <path d="M875 180 H920" class="flow"/>
+  <rect x="920" y="125" width="240" height="110" class="pool"/>
+  <text x="1040" y="164" text-anchor="middle" class="label">MaxPool 2×2</text>
+  <text x="1040" y="195" text-anchor="middle" class="detail">128 × 8 × 8</text>
+
+  <path d="M1040 235 V295 H135 V358" class="flow"/>
+  <text x="585" y="286" text-anchor="middle" class="small">continued</text>
+
+  <rect x="32" y="358" width="205" height="140" class="block"/>
+  <text x="134" y="394" text-anchor="middle" class="label">Block 3</text>
+  <text x="134" y="425" text-anchor="middle" class="detail">128 → 256 channels</text>
+  <text x="134" y="453" text-anchor="middle" class="detail">256 × 8 × 8 output</text>
+  <text x="134" y="478" text-anchor="middle" class="small">4 independent paths</text>
+
+  <path d="M237 428 H282" class="flow"/>
+  <rect x="282" y="373" width="170" height="110" class="pool"/>
+  <text x="367" y="412" text-anchor="middle" class="label">MaxPool 2×2</text>
+  <text x="367" y="443" text-anchor="middle" class="detail">256 × 4 × 4</text>
+
+  <path d="M452 428 H497" class="flow"/>
+  <rect x="497" y="358" width="205" height="140" class="block"/>
+  <text x="599" y="394" text-anchor="middle" class="label">Block 4</text>
+  <text x="599" y="425" text-anchor="middle" class="detail">256 → 256 channels</text>
+  <text x="599" y="453" text-anchor="middle" class="detail">256 × 4 × 4 output</text>
+  <text x="599" y="478" text-anchor="middle" class="small">4 independent paths</text>
+
+  <path d="M702 428 H747" class="flow"/>
+  <rect x="747" y="373" width="190" height="110" class="output"/>
+  <text x="842" y="412" text-anchor="middle" class="label">Output block</text>
+  <text x="842" y="440" text-anchor="middle" class="detail">spatial average</text>
+  <text x="842" y="465" text-anchor="middle" class="detail">+ fully connected layers</text>
+
+  <path d="M937 428 H982" class="flow"/>
+  <rect x="982" y="385" width="178" height="86" class="logits"/>
+  <text x="1071" y="420" text-anchor="middle" class="label">10-class logits</text>
+  <text x="1071" y="449" text-anchor="middle" class="detail">CIFAR-10 output</text>
+
+  <text x="600" y="566" text-anchor="middle" class="detail">Spatial resolution: 32×32 → 16×16 → 8×8 → 4×4</text>
+</svg>

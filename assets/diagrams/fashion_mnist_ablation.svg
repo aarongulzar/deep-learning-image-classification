@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Fashion-MNIST four-model ablation study</title>
+  <desc id="desc">Fashion-MNIST training data and a shared 10-epoch protocol branch into four CNN variants. Each variant is evaluated on the same unchanged test set. The BatchNorm CNN has the strongest best test accuracy at 92.50 percent.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Inter, "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 18px Inter, "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .detail { font: 400 15px Inter, "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .metric { font: 700 24px Inter, "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .small { font: 600 14px Inter, "Segoe UI", Arial, sans-serif; fill: #475569; }
+      .source { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2.5; rx: 12; }
+      .protocol { fill: #f1f5f9; stroke: #475569; stroke-width: 2; rx: 12; }
+      .variant { fill: #ffffff; stroke: #64748b; stroke-width: 2; rx: 12; }
+      .strongest { fill: #ecfdf5; stroke: #047857; stroke-width: 3.5; rx: 12; }
+      .test { fill: #fef3c7; stroke: #b45309; stroke-width: 2.5; rx: 12; }
+      .flow { fill: none; stroke: #334155; stroke-width: 2.3; marker-end: url(#arrow); }
+      .branch { fill: none; stroke: #64748b; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="#f8fafc"/>
+  <text x="600" y="44" text-anchor="middle" class="title">Fashion-MNIST ablation study</text>
+
+  <rect x="55" y="78" width="300" height="105" class="source"/>
+  <text x="205" y="115" text-anchor="middle" class="label">Fashion-MNIST training data</text>
+  <text x="205" y="144" text-anchor="middle" class="detail">60,000 grayscale images</text>
+  <text x="205" y="167" text-anchor="middle" class="detail">10 classes • 28 × 28 pixels</text>
+
+  <path d="M355 130 H420" class="flow"/>
+  <rect x="420" y="78" width="725" height="105" class="protocol"/>
+  <text x="782" y="113" text-anchor="middle" class="label">Shared training protocol</text>
+  <text x="782" y="143" text-anchor="middle" class="detail">Batch size 128 • Adam, learning rate 0.001 • cross-entropy loss • 10 epochs</text>
+  <text x="782" y="168" text-anchor="middle" class="small">The augmentation variant changes only its training DataLoader</text>
+
+  <path d="M782 183 V220" class="branch"/>
+  <path d="M155 220 H1045" class="branch"/>
+  <path d="M155 220 V252" class="flow"/>
+  <path d="M445 220 V252" class="flow"/>
+  <path d="M755 220 V252" class="flow"/>
+  <path d="M1045 220 V252" class="flow"/>
+
+  <rect x="30" y="252" width="250" height="184" class="variant"/>
+  <text x="155" y="289" text-anchor="middle" class="label">Baseline CNN</text>
+  <text x="155" y="319" text-anchor="middle" class="detail">No BatchNorm</text>
+  <text x="155" y="343" text-anchor="middle" class="detail">Dropout 0.3</text>
+  <text x="155" y="380" text-anchor="middle" class="small">Best test accuracy</text>
+  <text x="155" y="413" text-anchor="middle" class="metric">92.13%</text>
+
+  <rect x="320" y="252" width="250" height="184" class="strongest"/>
+  <text x="445" y="283" text-anchor="middle" class="small">Strongest observed result</text>
+  <text x="445" y="312" text-anchor="middle" class="label">BatchNorm CNN</text>
+  <text x="445" y="341" text-anchor="middle" class="detail">BatchNorm + dropout 0.3</text>
+  <text x="445" y="380" text-anchor="middle" class="small">Best test accuracy</text>
+  <text x="445" y="413" text-anchor="middle" class="metric">92.50%</text>
+
+  <rect x="630" y="252" width="250" height="184" class="variant"/>
+  <text x="755" y="289" text-anchor="middle" class="label">BatchNorm CNN</text>
+  <text x="755" y="316" text-anchor="middle" class="label">without dropout</text>
+  <text x="755" y="345" text-anchor="middle" class="detail">BatchNorm retained</text>
+  <text x="755" y="380" text-anchor="middle" class="small">Best test accuracy</text>
+  <text x="755" y="413" text-anchor="middle" class="metric">92.05%</text>
+
+  <rect x="920" y="252" width="250" height="184" class="variant"/>
+  <text x="1045" y="289" text-anchor="middle" class="label">BatchNorm CNN</text>
+  <text x="1045" y="316" text-anchor="middle" class="label">with augmentation</text>
+  <text x="1045" y="345" text-anchor="middle" class="detail">Crop + horizontal flip</text>
+  <text x="1045" y="380" text-anchor="middle" class="small">Best test accuracy</text>
+  <text x="1045" y="413" text-anchor="middle" class="metric">92.00%</text>
+
+  <path d="M155 436 V495" class="flow"/>
+  <path d="M445 436 V470 H600 V495" class="flow"/>
+  <path d="M755 436 V470 H600 V495" class="flow"/>
+  <path d="M1045 436 V470 H600 V495" class="flow"/>
+
+  <rect x="130" y="495" width="940" height="108" class="test"/>
+  <text x="600" y="537" text-anchor="middle" class="label">Same unchanged Fashion-MNIST test set for every variant</text>
+  <text x="600" y="568" text-anchor="middle" class="detail">10,000 images • identical test DataLoader • loss and accuracy recorded after each epoch</text>
+  <text x="600" y="640" text-anchor="middle" class="detail">Best test accuracy is reported for each preserved single run.</text>
+</svg>
